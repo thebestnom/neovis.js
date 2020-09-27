@@ -16,6 +16,20 @@ export default class NeoVis {
 	_events = new EventController();
 
 	/**
+	 * Get current nodes from the graph
+	 */
+	get nodes() {
+    return this._nodes;
+	}
+	
+	/**
+	 * Get current edges from the graph
+	 */
+	get edges() {
+    return this._edges;
+  }
+
+	/**
 	 *
 	 * @constructor
 	 * @param {object} config - configures the visualization and Neo4j server connection
@@ -431,7 +445,7 @@ export default class NeoVis {
 						},
 						10000
 					);
-					this._events.generateEvent(CompletionEvent, {record_count: recordCount, nodes: this._nodes, edges: this._edges});
+					this._events.generateEvent(CompletionEvent, {record_count: recordCount});
 
 					let neoVis = this;
 					this._network.on('click', function (params) {
